@@ -66,8 +66,9 @@
 .weather-container {
   display: flex;
   background-color: green;
+  flex-direction: column;
   flex-basis: 20%;
-  justify-content:space-evenly;
+  border-radius: 10pt;
 }
 
 p{

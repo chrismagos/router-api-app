@@ -16,6 +16,9 @@ const Layout = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
+          <li>
+            <Link to="/spotify">Spotify</Link>
+          </li>
         </ul>
       </nav>
     </div>
