@@ -69,6 +69,7 @@
   flex-direction: column;
   flex-basis: 20%;
   border-radius: 10pt;
+  flex-shrink: 0;
 }
 
 p{
@@ -79,6 +80,27 @@ p{
   text-align: left;
 }
 
-button{
-  
+.artists-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.artist {
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artist-image img {
+  width: 90%;
+}
+
+.artist-name {
+  margin-top: 10px;
+  font-size: small;
+  font-weight: bold;
 }
