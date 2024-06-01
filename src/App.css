@@ -100,3 +100,12 @@ p{
   font-size: small;
   font-weight: bold;
 }
+
+.album-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+ul{
+  list-style: none;
+}
