@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import getArtists from "../Services/getArtists";
 
 function Spotify() {
     const CLIENT_ID = '7ad380c0b5d24019be9b86ce237e9388';
@@ -7,47 +7,31 @@ function Spotify() {
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
     const RESPONSE_TYPE = 'token';
 
-    const [token, setToken] = useState("");
     const [searchKey, setSearchKey] = useState("")
     const [artists, setArtists] = useState([]);
-    const location = useLocation();
 
-    useEffect(() => {
-        const hash = location.hash;
-        if (hash) {
-            const token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
-            window.localStorage.setItem("token", token);
+    const [token, setToken] = useState(() => {
+        const hash = window.location.hash;
+        let savedToken = window.localStorage.getItem("token");
+        if (!savedToken && hash) {
+            savedToken = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
+            window.localStorage.setItem("token", savedToken);
             window.location.hash = "";
-            setToken(token);
         }
-    }, [location.hash]);
+        return savedToken || "";
+    });
 
     const logout = () => {
         setToken("");
         window.localStorage.removeItem("token");
-    };
+    };  
 
-
-    const searchArtists = async (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
         const token = window.localStorage.getItem("token");
-        try {
-            const response = await fetch(`https://api.spotify.com/v1/search?q=${searchKey}&type=artist`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            console.log(data)
-            setArtists(data.artists.items);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+        const artists = await getArtists(token, searchKey)
+        setArtists(artists);
+    }
 
     const renderArtists = () => {
         return (
@@ -74,12 +58,11 @@ function Spotify() {
             : <button onClick={logout}>Logout</button>}
 
             {token ?
-                <form onSubmit={searchArtists}>
+                <form onSubmit={handleSearch}>
                     <input type="text" onChange={e => setSearchKey(e.target.value)}/>
                     <button type={"submit"}>Search</button>
                 </form>
-
-                : <h3>Please login</h3>
+                : <></>
             }
 
             {renderArtists()}
