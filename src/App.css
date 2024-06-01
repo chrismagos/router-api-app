@@ -95,10 +95,6 @@ p{
   align-items: center;
 }
 
-.artist-image img {
-  width: 90%;
-}
-
 .artist-name {
   margin-top: 10px;
   font-size: small;

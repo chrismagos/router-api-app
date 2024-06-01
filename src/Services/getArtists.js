@@ -3,7 +3,7 @@ const getArtists = async (token, searchKey) => {
         const response = await fetch(`https://api.spotify.com/v1/search?q=${searchKey}&type=artist`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         });
         if (!response.ok) {

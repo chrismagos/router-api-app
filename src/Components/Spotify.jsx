@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import getArtists from "../Services/getArtists";
+import { Link } from "react-router-dom";
 
 function Spotify() {
     const CLIENT_ID = '7ad380c0b5d24019be9b86ce237e9388';
@@ -37,14 +38,14 @@ function Spotify() {
         return (
             <div className="artists-container">
                 {artists.map(artist => (
-                <div key={artist.id} className="artist">
-                    <div className="artist-image">
-                        {artist.images.length ? <img src={artist.images[0].url} alt=""/> : <div>No Image</div>}
+                    <div key={artist.id} className="artist">
+                        <div className="artist-image">
+                            {artist.images.length ? <img width="90%" src={artist.images[0].url} alt=""/> : <div>No Image</div>}
+                        </div>
+                        <div className="artist-name">
+                            <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
+                        </div>
                     </div>
-                    <div className="artist-name">
-                        {artist.name}
-                    </div>
-                </div>
                 ))}
             </div>
         );
@@ -64,7 +65,6 @@ function Spotify() {
                 </form>
                 : <></>
             }
-
             {renderArtists()}
         </div>
     );

@@ -7,6 +7,7 @@ import Layout from './Components/Layout';
 import Contact from "./Components/Contact";
 import Weather from './Components/Weather';
 import Spotify from './Components/Spotify';
+import Artist from './Components/Artist';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="weather" element={<Weather />} />
           <Route path="spotify" element={<Spotify />} />
+          <Route path="artist/:id" element={<Artist />} />
         </Route>
       </Routes>
       </BrowserRouter>
