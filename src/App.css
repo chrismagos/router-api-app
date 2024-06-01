@@ -40,7 +40,7 @@
 .navigation-container {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
 }
 
@@ -70,10 +70,12 @@
   flex-basis: 20%;
   border-radius: 10pt;
   flex-shrink: 0;
+  margin: 15pt;
+  margin-left: 0;
 }
 
 p{
-  text-align:justify;
+  text-align: center;
 }
 
 .contact-container{
@@ -108,4 +110,7 @@ p{
 
 ul{
   list-style: none;
+}
+
+.album-info-container{
 }
