@@ -12,13 +12,14 @@ const Weather = () => {
 
     const API_KEY = "1e5a4e9cfbdcddf37ee928b58e48802e"
 
-    const handleClick = async () => {
+    const handleRefresh = async () => {
         try{
             const coordinates = await getLocation();
             console.log(coordinates)
             const data = await getWeather(coordinates[0], coordinates[1], API_KEY);
             setWeatherData(data);
             setImage(getWeatherIcon(data.weather[0].icon))
+            console.log(data)
         } catch(error) {
             console.error("Error fetching weather data:", error)    
         }
@@ -26,12 +27,18 @@ const Weather = () => {
 
     return <>
     <h2>Weather</h2>
-    <button type="button" variant="dark" onClick={handleClick}>Refresh</button>{' '}
+    <Button variant="dark" onClick={handleRefresh}>Refresh</Button>{' '}
     {weatherData && (
         <div>
+            <div>
             <img src={image} alt="" />
-            <p>Temperature: {(weatherData.main.temp - 273.15).toFixed(2)}°C</p>
-            <p>Description: {weatherData.weather[0].description}</p>
+            {(weatherData.main.temp - 273.15).toFixed(2)}°C
+            </div>
+            <p>Feels like: {(weatherData.main.feels_like - 273.15).toFixed(2)}°C</p>
+            <p>Wind speed: {weatherData.wind.speed}m/s</p>
+            <p>Humidity: {weatherData.main.humidity}%</p>
+            <p>Pressure: {weatherData.main.pressure}hPa</p>
+            <p>Visibility: {(weatherData.visibility/1000).toFixed(2)}km</p>
         </div>
     )}
     </>
