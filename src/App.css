@@ -65,7 +65,7 @@
 
 .weather-container {
   display: flex;
-  background-color: green;
+  background-color: rgb(125, 165, 117);
   flex-direction: column;
   flex-basis: 20%;
   border-radius: 10pt;
@@ -110,7 +110,9 @@ p{
 
 ul{
   list-style: none;
+  padding: 0;
 }
 
-.album-info-container{
+h2{
+  text-align: center;
 }

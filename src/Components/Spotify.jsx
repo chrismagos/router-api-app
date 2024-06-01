@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import getArtists from "../Services/getArtists";
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Spotify() {
     const CLIENT_ID = '7ad380c0b5d24019be9b86ce237e9388';
@@ -55,13 +56,15 @@ function Spotify() {
         <div className="spotify-container">
             <h2>Spotify</h2>
             {!token ?
-                <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
-            : <button onClick={logout}>Logout</button>}
+                <button type="button" className="btn btn-outline-dark" onClick={() => window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</button>
+            : <button type="button" onClick={logout} class="btn btn-outline-dark">Logout</button>}
 
             {token ?
-                <form onSubmit={handleSearch}>
-                    <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-                    <button type={"submit"}>Search</button>
+                <form onSubmit={handleSearch} className="form-inline">
+                    <div className="form-group mx-sm-3 mb-2 d-flex">
+                        <input className="form-control" onChange={e => setSearchKey(e.target.value)}/>
+                        <button type="submit" className="btn btn-outline-dark">Search</button>
+                    </div>
                 </form>
                 : <></>
             }

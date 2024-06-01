@@ -3,7 +3,6 @@ import getWeather from "../Services/getWeather";
 import { useState } from "react";
 import getWeatherIcon from "../Services/getWeatherIcon";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 
 const Weather = () => {
     const [location, setLocation] = useState("");
@@ -27,7 +26,7 @@ const Weather = () => {
 
     return <>
     <h2>Weather</h2>
-    <button variant="dark" onClick={handleRefresh}>Refresh</button>{' '}
+    <button type="button" onClick={handleRefresh} class="btn btn-outline-dark">Refresh</button>
     {weatherData && (
         <div>
             <div>

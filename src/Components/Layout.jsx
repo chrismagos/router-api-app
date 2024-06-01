@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import '../App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Weather from "./Weather";
 
@@ -8,18 +9,18 @@ const Layout = () => {
     <div className="navigation-container">
     <div className="flex-container">
       <nav>
-        <ul className="Navigation">
-          <h1>Navigation</h1>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/spotify">Spotify</Link>
-          </li>
-        </ul>
+          <div className="row">
+          <h2>Navigation</h2>
+            <div className="col-12 mb-2">
+                <Link to="/" className="btn btn-outline-dark w-100">Home</Link>
+            </div>
+            <div className="col-12 mb-2">
+                <Link to="/contact" className="btn btn-outline-dark w-100">Contact</Link>
+            </div>
+            <div className="col-12 mb-2">
+                <Link to="/spotify" className="btn btn-outline-dark w-100">Spotify</Link>
+            </div>
+          </div>
       </nav>
     </div>
     <div className="body-container">
