@@ -27,7 +27,7 @@ const Weather = () => {
 
     return <>
     <h2>Weather</h2>
-    <Button variant="dark" onClick={handleRefresh}>Refresh</Button>{' '}
+    <button variant="dark" onClick={handleRefresh}>Refresh</button>{' '}
     {weatherData && (
         <div>
             <div>
