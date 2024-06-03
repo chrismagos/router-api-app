@@ -52,7 +52,7 @@ const Artist = () => {
 
     return (
         <div className="artist-details">
-            <h1>{artist.name}</h1>
+            <a href={artist.external_urls.spotify}><h1>{artist.name}</h1></a>
             {<img width="40%" src={artist.images[0].url} alt={artist.name} />}
             <p>Followers: {artist.followers.total}</p>
             <p>Genres: {artist.genres.join(", ")}</p>

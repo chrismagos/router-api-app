@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import getAlbum from "../Services/getAlbum";
 import getSongs from "../Services/getSongs";
@@ -22,7 +22,6 @@ const Album = () => {
         try{
             const data = await getSongs(token, albumId)
             setSongs(data)
-            console.log(data)
         }catch(error){
             console.error('Error fetching song data:', error)
         }
@@ -55,7 +54,7 @@ const Album = () => {
 
     return (
         <div>
-            <h1>{album.name}</h1>
+            <a href={album.external_urls.spotify}><h1>{album.name}</h1></a>
             {<img width="40%" src={album.images[0].url} alt={album.name} />}
             <p>Artist: {album.artists.map(artist => artist.name).join(", ")}</p>
             <p>Release Date: {formatDate(album.release_date)}</p>
@@ -64,7 +63,7 @@ const Album = () => {
             <h2>Tracks:</h2>
             {songs.map(song => (
                         <li key={song.id}>
-                            {song.track_number}: {song.name}, {formatDuration(song.duration_ms)}
+                            <a href={song.external_urls.spotify}>{song.track_number}: {song.name}, {formatDuration(song.duration_ms)}</a>
                         </li>
                     ))}
             </ul>
