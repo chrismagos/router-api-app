@@ -14,11 +14,9 @@ const Weather = () => {
     const handleRefresh = async () => {
         try{
             const coordinates = await getLocation();
-            console.log(coordinates)
             const data = await getWeather(coordinates[0], coordinates[1], API_KEY);
             setWeatherData(data);
             setImage(getWeatherIcon(data.weather[0].icon))
-            console.log(data)
         } catch(error) {
             console.error("Error fetching weather data:", error)    
         }
@@ -29,6 +27,7 @@ const Weather = () => {
     <button type="button" onClick={handleRefresh} class="btn btn-outline-dark">Refresh</button>
     {weatherData && (
         <div>
+            <h3>{weatherData.name}</h3>
             <div>
             <img src={image} alt="" />
             {(weatherData.main.temp - 273.15).toFixed(2)}°C

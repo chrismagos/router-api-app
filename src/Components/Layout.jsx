@@ -15,9 +15,6 @@ const Layout = () => {
                 <Link to="/" className="btn btn-outline-dark w-100">Home</Link>
             </div>
             <div className="col-12 mb-2">
-                <Link to="/contact" className="btn btn-outline-dark w-100">Contact</Link>
-            </div>
-            <div className="col-12 mb-2">
                 <Link to="/spotify" className="btn btn-outline-dark w-100">Spotify</Link>
             </div>
           </div>

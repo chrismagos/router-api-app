@@ -11,7 +11,7 @@ const getSongs = async (token, albumId) => {
         }
 
         const data = await response.json();
-        return data.items; // Assuming the tracks are stored in the 'items' array
+        return data.items;
     } catch (error) {
         console.error('Error fetching songs data:', error);
     }

@@ -26,6 +26,7 @@ function Spotify() {
     const logout = () => {
         setToken("");
         window.localStorage.removeItem("token");
+        setArtists([])
     };  
 
     const handleSearch = async (e) => {
