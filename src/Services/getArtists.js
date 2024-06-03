@@ -1,6 +1,6 @@
 const getArtists = async (token, searchKey) => {
     try {
-        const response = await fetch(`https://api.spotify.com/v1/search?q=${searchKey}&type=artist`, {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${searchKey}&type=artist&limit=30`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`

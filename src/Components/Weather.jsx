@@ -5,7 +5,6 @@ import getWeatherIcon from "../Services/getWeatherIcon";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Weather = () => {
-    const [location, setLocation] = useState("");
     const [weatherData, setWeatherData] = useState(null)
     const [image, setImage] = useState("")
 
